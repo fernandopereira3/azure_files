@@ -28,3 +28,10 @@ resource "azurerm_storage_share" "share-file" {
     }
   }
 }
+
+resource "azurerm_data_protection_backup_vault" "evitar" {
+  name                = "evitar"
+  resource_group_name = azurerm_resource_group.share-file.name
+  location            = azurerm_resource_group.share-file.location
+  datastore_type      = "VaultStore"
+  redundancy          = "LocallyRedundant"
